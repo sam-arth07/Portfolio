@@ -99,7 +99,7 @@ export default function Footer() {
 							rights reserved.
 						</p>
 						<p className="text-sm text-muted font-mono">
-							Designed & Built with Next.js
+							Designed & Built with ❤️
 						</p>
 					</div>
 				</motion.div>
