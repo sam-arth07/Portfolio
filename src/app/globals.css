@@ -1,26 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200;300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/**
+ * Custom Design System
+ * Tailwind v4 uses CSS variables for theming
+ */
+
+@theme {
+  /* Color System */
+  --color-background: #0a0a0a;
+  --color-surface: #121212;
+  --color-surface-highlight: #1e1e1e;
+  --color-foreground: #e0e0e0;
+  --color-muted: #888888;
+  --color-accent: #ffffff;
+  --color-border: #2a2a2a;
+  
+  /* Font Families */
+  --font-family-heading: 'Bebas Neue', sans-serif;
+  --font-family-body: 'Manrope', sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Make colors available as CSS variables */
+  --background: var(--color-background);
+  --surface: var(--color-surface);
+  --surface-highlight: var(--color-surface-highlight);
+  --foreground: var(--color-foreground);
+  --muted: var(--color-muted);
+  --accent: var(--color-accent);
+  --border: var(--color-border);
+  --font-heading: var(--font-family-heading);
+  --font-body: var(--font-family-body);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-highlight);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Bento Grid Utilities */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.bento-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card:hover {
+  background-color: var(--surface-highlight);
+  border-color: var(--muted);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Text Stroke */
+.text-stroke-white {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  color: transparent;
+}
+
+.text-stroke-white:hover {
+  -webkit-text-stroke: 1px #ffffff;
+  color: transparent;
 }
