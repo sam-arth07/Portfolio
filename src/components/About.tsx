@@ -8,7 +8,7 @@ export default function About() {
 		<section
 			id="about"
 			className="min-h-screen flex items-center justify-center py-32 px-6 md:px-12 lg:px-20">
-			<div className="w-full max-w-7xl">
+			<div className="w-[80%] max-w-7xl">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
