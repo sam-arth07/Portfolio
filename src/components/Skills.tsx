@@ -75,7 +75,7 @@ export default function Skills() {
 								{group.skills.map((skill) => (
 									<span
 										key={skill}
-										className="rounded-full text-md font-mono bg-surface-highlight/50 border border-border text-muted hover:text-foreground hover:border-muted transition-colors duration-300 cursor-pointer">
+										className="rounded-full text-md font-mono bg-surface-highlight/50 border border-border text-muted hover:text-foreground hover:border-muted transition-colors duration-300 cursor-pointer px-4 py-4">
 										{skill}
 									</span>
 								))}
@@ -165,7 +165,7 @@ export default function Skills() {
 							</div>
 						</div>
 					</motion.div>
-				<div className="h-48 w-full" />
+					<div className="h-48 w-full" />
 				</div>
 			</div>
 		</section>

@@ -11,6 +11,7 @@ const projects = [
 		tech: ["Kotlin", "Retrofit", "RoomDB"],
 		year: "2025",
 		size: "col-span-1 md:col-span-2",
+		link: "https://github.com/sam-arth07/AnimeWiki",
 	},
 	{
 		title: "Currency Converter",
@@ -18,6 +19,7 @@ const projects = [
 		tech: ["Kotlin", "KMP", "REST API"],
 		year: "2025",
 		size: "col-span-1",
+		link: "https://github.com/sam-arth07/CurrencyApp",
 	},
 	{
 		title: "Nss Meet",
@@ -25,6 +27,7 @@ const projects = [
 		tech: ["Jetpack Compose", "Firebase"],
 		year: "2025",
 		size: "col-span-1",
+		link: "https://github.com/sam-arth07",
 	},
 	{
 		title: "Mifos Initiative",
@@ -32,6 +35,7 @@ const projects = [
 		tech: ["Android", "Open Source"],
 		year: "2025",
 		size: "col-span-1 md:col-span-2",
+		link: "https://github.com/sam-arth07/android-client",
 	},
 ];
 
@@ -86,12 +90,15 @@ export default function Projects() {
 					viewport={{ once: true, margin: "-100px" }}
 					className="grid grid-cols-1 md:grid-cols-3 gap-6">
 					{projects.map((project) => (
-						<motion.div
+						<motion.a
 							key={project.title}
+							href={project.link}
+							target="_blank"
+							rel="noopener noreferrer"
 							variants={itemVariants}
-							className={`bento-card group flex flex-col justify-between min-h-[300px] ${project.size}`}>
+							className={`bento-card group flex flex-col justify-between min-h-[300px] ${project.size} cursor-pointer`}>
 							<div className="flex justify-between items-start">
-								<span className="font-mono text-sm text-muted border border-border px-2 py-1 rounded-full">
+								<span className="font-mono text-sm text-muted border border-border px-4 py-2 rounded-full">
 									{project.year}
 								</span>
 								<ArrowUpRight className="w-6 h-6 text-muted group-hover:text-accent transition-colors" />
@@ -115,7 +122,7 @@ export default function Projects() {
 									))}
 								</div>
 							</div>
-						</motion.div>
+						</motion.a>
 					))}
 				</motion.div>
 				<div className="h-48 w-full" />
