@@ -71,9 +71,9 @@ export default function About() {
 									Phone
 								</p>
 								<a
-									href="tel:+919078637346"
+									href="tel:+919978637346"
 									className="text-lg font-medium text-foreground hover:text-accent transition-colors">
-									+91-9078637346
+									+91-9978637346
 								</a>
 							</div>
 							<div>

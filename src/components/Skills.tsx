@@ -114,7 +114,7 @@ export default function Skills() {
 									CGPA
 								</p>
 								<p className="text-4xl font-heading text-foreground">
-									8.73
+									8.76
 								</p>
 							</div>
 							<div>
@@ -157,10 +157,10 @@ export default function Skills() {
 							</div>
 							<div className="group/item">
 								<p className="text-lg text-foreground font-medium mb-1 group-hover/item:text-accent transition-colors">
-									Google Cloud Study Jams
+									Android Development
 								</p>
 								<p className="text-sm text-muted font-mono">
-									Google • 2023
+									Udemy • 2025
 								</p>
 							</div>
 						</div>

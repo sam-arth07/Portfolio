@@ -69,7 +69,7 @@ export default function Hero() {
 					transition={{ duration: 0.8 }}
 					className="mb-8">
 					<span className="text-accent text-lg tracking-[0.2em] uppercase font-medium">
-						Portfolio 2025
+						Hajime Mashite, Orewa
 					</span>
 				</motion.div>
 
