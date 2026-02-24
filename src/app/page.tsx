@@ -9,7 +9,7 @@ import Skills from "@/components/Skills";
 
 export default function Home() {
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen relative z-10">
 			<Navbar />
 			<main>
 				<Hero />
@@ -18,7 +18,7 @@ export default function Home() {
 				<Projects />
 
 				{/* Spacer & Divider */}
-				<div className="w-full px-6 md:px-12 lg:px-20">
+				<div className="w-full px-6 md:px-12 lg:px-20 glow-divider">
 					<div className="w-full h-px bg-linear-to-r from-transparent via-border to-transparent opacity-20" />
 				</div>
 

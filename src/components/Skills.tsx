@@ -40,7 +40,7 @@ export default function Skills() {
 	return (
 		<section
 			id="skills"
-			className="min-h-screen flex items-center justify-center py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-background">
+			className="min-h-screen flex items-center justify-center py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-transparent relative">
 			<div className="max-w-[1600px] w-[80%]">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

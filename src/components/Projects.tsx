@@ -64,7 +64,7 @@ export default function Projects() {
 	return (
 		<section
 			id="projects"
-			className="min-h-screen flex items-center justify-center py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-background">
+			className="min-h-screen flex items-center justify-center py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-transparent relative">
 			<div className="w-[80%] max-w-[1600px]">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

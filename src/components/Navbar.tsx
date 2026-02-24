@@ -1,8 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTheme } from "./ThemeProvider";
 
 const navItems = [
 	{ name: "About", href: "#about" },
@@ -15,6 +16,7 @@ export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 	const [activeSection, setActiveSection] = useState("");
+	const { theme, toggleTheme } = useTheme();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -37,7 +39,7 @@ export default function Navbar() {
 			{
 				rootMargin: "-50% 0px -50% 0px",
 				threshold: 0,
-			}
+			},
 		);
 
 		const sections = document.querySelectorAll("section[id]");
@@ -94,6 +96,36 @@ export default function Navbar() {
 							);
 						})}
 					</div>
+
+					{/* Theme Toggle */}
+					<motion.button
+						onClick={toggleTheme}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+						className="relative w-9 h-9 flex items-center justify-center rounded-full border border-border text-muted hover:text-foreground hover:border-muted transition-colors"
+						aria-label="Toggle theme">
+						<AnimatePresence mode="wait" initial={false}>
+							{theme === "dark" ? (
+								<motion.div
+									key="sun"
+									initial={{ rotate: -90, opacity: 0 }}
+									animate={{ rotate: 0, opacity: 1 }}
+									exit={{ rotate: 90, opacity: 0 }}
+									transition={{ duration: 0.2 }}>
+									<Sun className="w-4 h-4" />
+								</motion.div>
+							) : (
+								<motion.div
+									key="moon"
+									initial={{ rotate: 90, opacity: 0 }}
+									animate={{ rotate: 0, opacity: 1 }}
+									exit={{ rotate: -90, opacity: 0 }}
+									transition={{ duration: 0.2 }}>
+									<Moon className="w-4 h-4" />
+								</motion.div>
+							)}
+						</AnimatePresence>
+					</motion.button>
 
 					{/* Mobile Menu Button */}
 					<button

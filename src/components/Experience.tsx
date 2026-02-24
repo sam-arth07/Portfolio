@@ -47,7 +47,7 @@ export default function Experience() {
 	return (
 		<section
 			id="experience"
-			className="min-h-screen flex items-center justify-center py-32 px-6 md:px-12 lg:px-20 bg-background">
+			className="min-h-screen flex items-center justify-center py-32 px-6 md:px-12 lg:px-20 bg-transparent relative">
 			<div className="w-[80%]">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

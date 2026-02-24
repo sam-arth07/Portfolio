@@ -32,7 +32,7 @@ const links = [
 
 export default function Footer() {
 	return (
-		<footer className="flex justify-center items-center min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-background border-t border-border">
+		<footer className="flex justify-center items-center min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-transparent border-t border-border/30 relative">
 			<div className="w-[80%] max-w-[1600px]">
 				{/* Heading */}
 				<motion.div

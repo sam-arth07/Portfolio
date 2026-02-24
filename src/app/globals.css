@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200;300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 /**
@@ -7,117 +7,348 @@
  */
 
 @theme {
-  /* Color System */
-  --color-background: #0a0a0a;
-  --color-surface: #121212;
-  --color-surface-highlight: #1e1e1e;
-  --color-foreground: #e0e0e0;
-  --color-muted: #888888;
-  --color-accent: #ffffff;
-  --color-border: #2a2a2a;
-  
-  /* Font Families */
-  --font-family-heading: 'Bebas Neue', sans-serif;
-  --font-family-body: 'Manrope', sans-serif;
+	/* Color System — references dynamic CSS vars so theme switching works */
+	--color-background: var(--background);
+	--color-surface: var(--surface);
+	--color-surface-highlight: var(--surface-highlight);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-accent: var(--accent);
+	--color-border: var(--border);
+
+	/* Font Families */
+	--font-family-heading: "Bebas Neue", sans-serif;
+	--font-family-body: "Manrope", sans-serif;
 }
 
-:root {
-  /* Make colors available as CSS variables */
-  --background: var(--color-background);
-  --surface: var(--color-surface);
-  --surface-highlight: var(--color-surface-highlight);
-  --foreground: var(--color-foreground);
-  --muted: var(--color-muted);
-  --accent: var(--color-accent);
-  --border: var(--color-border);
-  --font-heading: var(--font-family-heading);
-  --font-body: var(--font-family-body);
+/* Dark theme (default) */
+:root,
+[data-theme="dark"] {
+	--background: #0a0a0a;
+	--surface: #121212;
+	--surface-highlight: #1e1e1e;
+	--foreground: #e0e0e0;
+	--muted: #888888;
+	--accent: #ffffff;
+	--border: #2a2a2a;
+	--font-heading: var(--font-family-heading);
+	--font-body: var(--font-family-body);
+
+	/* Particle / glow colors */
+	--particle-core: 255, 255, 255;
+	--particle-glow: 200, 210, 255;
+	--particle-line: 180, 200, 255;
+	--glow-accent: 100, 140, 255;
+	--cursor-dot: rgba(255, 255, 255, 0.6);
+	--card-shadow-base: rgba(0, 0, 0, 0.5);
+}
+
+/* Light theme — "vintage parchment" aesthetic */
+[data-theme="light"] {
+	--background: #f5f0e6;
+	--surface: #faf6ee;
+	--surface-highlight: #efe8d8;
+	--foreground: #3b1f0b;
+	--muted: #7a5c3a;
+	--accent: #7c2d12;
+	--border: #d4c4a8;
+
+	/* Warm amber / gold particle palette */
+	--particle-core: 161, 118, 57;
+	--particle-glow: 180, 130, 60;
+	--particle-line: 170, 130, 80;
+	--glow-accent: 161, 118, 57;
+	--cursor-dot: rgba(124, 45, 18, 0.75);
+	--card-shadow-base: rgba(44, 26, 14, 0.08);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
-  overflow-x: hidden;
-  line-height: 1.6;
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-body);
+	overflow-x: hidden;
+	line-height: 1.6;
 }
 
 /* Typography Utilities */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-heading);
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+	background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--surface-highlight);
-  border-radius: 3px;
+	background: var(--surface-highlight);
+	border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
+	background: var(--muted);
 }
 
 /* Bento Grid Utilities */
 .bento-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1.5rem;
 }
 
 .bento-card {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  position: relative;
-  overflow: hidden;
+	background-color: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 1.5rem;
+	padding: 2rem;
+	transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+	position: relative;
+	overflow: hidden;
 }
 
 .bento-card:hover {
-  background-color: var(--surface-highlight);
-  border-color: var(--muted);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+	background-color: var(--surface-highlight);
+	border-color: rgba(var(--glow-accent), 0.3);
+	transform: translateY(-4px);
+	box-shadow:
+		0 20px 40px -10px var(--card-shadow-base),
+		0 0 30px -5px rgba(var(--glow-accent), 0.1),
+		inset 0 1px 0 0 rgba(var(--glow-accent), 0.1);
+}
+
+/* Light theme card refinement — aged paper shadow + warm tint */
+[data-theme="light"] .bento-card {
+	box-shadow:
+		0 1px 3px rgba(44, 26, 14, 0.06),
+		0 2px 8px rgba(44, 26, 14, 0.03);
+}
+
+[data-theme="light"] .bento-card:hover {
+	background-color: var(--surface-highlight);
+	border-color: rgba(161, 118, 57, 0.3);
+	box-shadow:
+		0 4px 12px rgba(161, 118, 57, 0.08),
+		0 12px 32px rgba(44, 26, 14, 0.06),
+		0 0 0 1px rgba(161, 118, 57, 0.1),
+		inset 0 1px 0 0 rgba(255, 250, 240, 0.9);
+}
+
+/* Card glow tracking effect */
+.bento-card {
+	--glow-x: 50%;
+	--glow-y: 50%;
+}
+
+.bento-card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: radial-gradient(
+		600px circle at var(--glow-x) var(--glow-y),
+		rgba(var(--glow-accent), 0.06),
+		transparent 40%
+	);
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	pointer-events: none;
+	z-index: 0;
+}
+
+.bento-card:hover::before {
+	opacity: 1;
+}
+
+.bento-card > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Global cursor override for desktop */
+@media (pointer: fine) {
+	* {
+		cursor: none !important;
+	}
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+	animation: fadeIn 0.8s ease-out forwards;
 }
 
 /* Text Stroke */
 .text-stroke-white {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-  color: transparent;
+	-webkit-text-stroke: 1px rgba(var(--particle-core), 0.3);
+	color: transparent;
 }
 
 .text-stroke-white:hover {
-  -webkit-text-stroke: 1px #ffffff;
-  color: transparent;
+	-webkit-text-stroke: 1px rgb(var(--particle-core));
+	color: transparent;
+}
+
+/* Light mode text stroke — sepia ink emboss for vintage feel */
+[data-theme="light"] .text-stroke-white {
+	-webkit-text-stroke: 2px rgba(124, 45, 18, 0.25);
+	color: transparent;
+}
+
+[data-theme="light"] .text-stroke-white:hover {
+	-webkit-text-stroke: 2px rgba(124, 45, 18, 0.7);
+	color: transparent;
+}
+
+/* Floating animation for particles */
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0px) rotate(0deg);
+	}
+	33% {
+		transform: translateY(-10px) rotate(1deg);
+	}
+	66% {
+		transform: translateY(5px) rotate(-1deg);
+	}
+}
+
+@keyframes glow-pulse {
+	0%,
+	100% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 0.8;
+	}
+}
+
+/* Section divider glow */
+.glow-divider {
+	position: relative;
+}
+
+.glow-divider::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 200px;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(var(--glow-accent), 0.3),
+		transparent
+	);
+}
+
+/* Glow text effect for headings on hover */
+.glow-text {
+	transition: text-shadow 0.4s ease;
+}
+
+.glow-text:hover {
+	text-shadow:
+		0 0 20px rgba(var(--glow-accent), 0.3),
+		0 0 40px rgba(var(--glow-accent), 0.1);
+}
+
+/* Enhanced link hover */
+a {
+	transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Selection color */
+::selection {
+	background: rgba(var(--glow-accent), 0.3);
+	color: var(--accent);
+}
+
+/* Theme transition */
+body,
+.bento-card,
+.bento-card::before {
+	transition:
+		background-color 0.4s ease,
+		color 0.4s ease,
+		border-color 0.4s ease,
+		box-shadow 0.4s ease;
+}
+
+/* Light-theme scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track {
+	background: var(--background);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+	background: #d4c5a9;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+	background: #b8a687;
+}
+
+/* Light mode: warm glow-card radial */
+[data-theme="light"] .bento-card::before {
+	background: radial-gradient(
+		600px circle at var(--glow-x) var(--glow-y),
+		rgba(161, 118, 57, 0.05),
+		transparent 40%
+	);
+}
+
+/* Light mode: selection — warm amber */
+[data-theme="light"] ::selection {
+	background: rgba(161, 118, 57, 0.25);
+	color: #1a0f05;
+}
+
+/* Light mode: glow text uses warm ochre */
+[data-theme="light"] .glow-text:hover {
+	text-shadow:
+		0 0 30px rgba(161, 118, 57, 0.18),
+		0 0 60px rgba(180, 130, 60, 0.08);
+}
+
+/* Light mode: glow divider warm */
+[data-theme="light"] .glow-divider::after {
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(161, 118, 57, 0.25),
+		transparent
+	);
 }
